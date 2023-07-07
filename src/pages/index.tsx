@@ -12,8 +12,8 @@ export default function Home() {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
       console.log(user);
-    } catch ({ code, message }) {
-      console.log(code, message);
+    } catch (error) {
+      console.log(error, "error");
     }
   };
 
