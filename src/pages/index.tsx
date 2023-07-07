@@ -6,14 +6,15 @@ import { ChangeEvent, useState } from "react";
 export default function Home() {
   const [email, setEmail] = useState("player10@gmail.com");
   const [password, setPassword] = useState("!12345qwert");
-  const [userData, setUserData] = useState(null);
 
   const login = async () => {
     try {
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
-      console.log(user);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      window.localStorage.setItem("uid", result.user.uid);
+      location.href = "/list";
     } catch (error) {
       console.log(error, "error");
+      alert("로그인에 실패하였습니다\n아이디와 비밀번호를 확인해주세요");
     }
   };
 
