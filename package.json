@@ -5,20 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@firebase/auth": "^0.23.2",
-    "@firebase/firestore": "^3.13.0",
+    "@firebase/firestore": "^2.3.7",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "antd": "^5.6.3",
     "autoprefixer": "10.4.14",
     "dayjs": "^1.11.9",
-    "eslint": "8.44.0",
-    "firebase": "^9.23.0",
+    "firebase": "^8.6.8",
     "next": "13.4.7",
     "postcss": "8.4.24",
     "prettier": "^2.8.8",
