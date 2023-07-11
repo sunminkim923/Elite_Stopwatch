@@ -5,10 +5,11 @@ import { Card } from "antd";
 import dayjs from "dayjs";
 
 export default function List() {
-  const uid = typeof window !== "undefined" ? localStorage.getItem("uid") : "";
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
+    const uid =
+      typeof window !== "undefined" ? localStorage.getItem("uid") : null;
     const userDataListRef = collection(db, "user", uid, "training");
 
     const getUserDataList = async () => {
