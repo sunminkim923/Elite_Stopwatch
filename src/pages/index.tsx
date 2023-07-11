@@ -4,13 +4,13 @@ import { auth } from "@/firebase-config";
 import { ChangeEvent, useState } from "react";
 
 export default function Home() {
-  const [email, setEmail] = useState("player10@gmail.com");
+  const [email, setEmail] = useState("player2@gmail.com");
   const [password, setPassword] = useState("!12345qwert");
 
   const login = async () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      window.localStorage.setItem("uid", result.user.uid);
+      window.localStorage.setItem("uid", result?.user?.uid);
       location.href = "/list";
     } catch (error) {
       console.log(error, "error");
