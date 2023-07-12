@@ -7,7 +7,7 @@ export default function List() {
 
   console.log(userInfoStore?.userData);
 
-  const getStopwatchRaw = (data) => {
+  const getStopwatchRaw = (data: any) => {
     switch (data) {
       case 0:
         return "- Interval -";
