@@ -2,13 +2,13 @@ import { Button, Input } from "antd";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "@/config/firebase-config";
 import { ChangeEvent, useState } from "react";
-import { useStore } from "zustand";
+import useStore from "@/store/store";
 
 export default function Home() {
   const [email, setEmail] = useState("player2@gmail.com");
   const [password, setPassword] = useState("!12345qwert");
 
-  const userInfo = useStore<any>();
+  const userInfo: any = useStore();
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -21,7 +21,7 @@ export default function Home() {
   const login = async () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      window.localStorage.setItem("uid", result?.user?.uid);
+      userInfo?.setUid(result?.user?.uid);
       console.log(result);
       // location.href = "/list";
     } catch (error) {
