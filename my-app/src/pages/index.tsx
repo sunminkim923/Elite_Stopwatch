@@ -2,10 +2,13 @@ import { Button, Input } from "antd";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "@/config/firebase-config";
 import { ChangeEvent, useState } from "react";
+import { useStore } from "zustand";
 
 export default function Home() {
   const [email, setEmail] = useState("player2@gmail.com");
   const [password, setPassword] = useState("!12345qwert");
+
+  const userInfo = useStore<any>();
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
