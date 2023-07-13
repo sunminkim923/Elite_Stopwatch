@@ -1,6 +1,6 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app"; // Import the functions you need from the SDKs you need
+import '@/styles/globals.css'
+import type { AppProps } from 'next/app'
 
-export default function AppHome({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
 }
