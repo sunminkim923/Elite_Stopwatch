@@ -26,8 +26,9 @@ export default function List() {
     }
   };
 
-  const onClickItem = (index: any) => {
-    router.push(`/list/detail/${index}`);
+  const onClickItem = async (data, index: any) => {
+    userInfoStore.setUserDataDetail(data);
+    await router.push(`/list/detail/${index}`);
   };
 
   return (
@@ -37,7 +38,7 @@ export default function List() {
           {userInfoStore?.userData?.map((data: any, index: number) => (
             <Card
               className={"mt-4 border-2 shadow-lg"}
-              onClick={() => onClickItem(index)}
+              onClick={() => onClickItem(data, index)}
               key={index}
             >
               <div className={"text-[16px] font-bold"}>

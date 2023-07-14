@@ -5,11 +5,15 @@ export const useStore = create<any>(
     (set: any) => ({
       uid: "",
       userData: [],
+      userDataDetail: [],
       setUid: (state: any) => {
         set(() => ({ uid: state }));
       },
       setUserData: (state: any) => {
         set(() => ({ userData: state }));
+      },
+      setUserDataDetail: (state: any) => {
+        set(() => ({ userDataDetail: state }));
       },
     }),
     { name: "uid", storage: createJSONStorage(() => sessionStorage) }
