@@ -6,8 +6,8 @@ import useStore from "@/store/store";
 import { collection, getDocs } from "@firebase/firestore";
 
 export default function Home() {
-  const [email, setEmail] = useState("player2@gmail.com");
-  const [password, setPassword] = useState("!12345qwert");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const userInfoStore: any = useStore();
 
