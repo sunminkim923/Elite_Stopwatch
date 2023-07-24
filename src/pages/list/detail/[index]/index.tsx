@@ -8,8 +8,8 @@ export default function UserDataInfo() {
   const userInfoStore: any = useStore();
   const [mounted, setMounted] = useState<boolean>(false);
 
-  const [detailInfo, setDetailInfo] = useState({});
-  const [setList, setSetList] = useState([]);
+  const [detailInfo, setDetailInfo] = useState<any>({});
+  const [setList, setSetList] = useState<any>([]);
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +25,7 @@ export default function UserDataInfo() {
       if(index === 0) {
           return dayjs.unix(data[index] / 100).format("mm:ss.SSS")
       } else {
-          const recordDiff = data[index] - data[index-1]
+          const recordDiff: any = data[index] - data[index-1]
           return dayjs.unix(recordDiff / 100).format("mm:ss.SSS")
       }
     }
