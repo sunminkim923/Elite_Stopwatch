@@ -21,7 +21,7 @@ export default function UserDataInfo() {
   }, []);
 
 
-    function getRecordDiff (data, index) {
+    function getRecordDiff (data:any, index: any) {
       if(index === 0) {
           return dayjs.unix(data[index] / 100).format("mm:ss.SSS")
       } else {
