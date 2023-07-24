@@ -26,7 +26,7 @@ export default function List() {
     }
   };
 
-  const onClickItem = async (data, index: any) => {
+  const onClickItem = async (data:any, index: any) => {
     userInfoStore.setUserDataDetail(data);
     await router.push(`/list/detail/${index}`);
   };
