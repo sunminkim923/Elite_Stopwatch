@@ -34,13 +34,13 @@ export default function UserDataInfo() {
     mounted && (
       <>
         <div className={"py-6 px-4"}>
-          {setList?.map((data, index) => (
+          {setList?.map((data: any, index: any) => (
             <Card className={"mt-4 border-2 shadow-lg"} key={index}>
               <div className={"text-[16px] font-bold"}>{data.set + 1} SET</div>
               {/*<div>stopwatchLap : 0번째 데이터</div>*/}
               {/*<div>stopwatchTotal : 1번째 데이터</div>*/}
 
-              {data?.record?.map((item, index) => (
+              {data?.record?.map((item: any, index:any) => (
                 <div className={"mt-2 flex font-bold"} key={index}>
                   <div className={"w-[30%]"}>
                     {detailInfo?.stopwatchLap * (index + 1)}m
