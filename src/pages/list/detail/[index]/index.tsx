@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useStore from "@/store/store";
 import { useEffect, useState } from "react";
 import { Card } from "antd";
+import dayjs from "dayjs";
 
 export default function UserDataInfo() {
   const userInfoStore: any = useStore();
@@ -15,10 +16,19 @@ export default function UserDataInfo() {
     const data: any = userInfoStore?.userDataDetail;
 
     setDetailInfo(data);
-    setSetList(Object.values(data).filter((data) => Array.isArray(data)));
+    setSetList(userInfoStore?.userDataDetail?.recordData)
+
   }, []);
 
-  console.log(detailInfo);
+
+    function getRecordDiff (data, index) {
+      if(index === 0) {
+          return dayjs.unix(data[index] / 100).format("mm:ss.SSS")
+      } else {
+          const recordDiff = data[index] - data[index-1]
+          return dayjs.unix(recordDiff / 100).format("mm:ss.SSS")
+      }
+    }
 
   return (
     mounted && (
@@ -26,17 +36,19 @@ export default function UserDataInfo() {
         <div className={"py-6 px-4"}>
           {setList?.map((data, index) => (
             <Card className={"mt-4 border-2 shadow-lg"} key={index}>
-              <div className={"text-[16px] font-bold"}>{index + 1} SET</div>
+              <div className={"text-[16px] font-bold"}>{data.set + 1} SET</div>
               {/*<div>stopwatchLap : 0번째 데이터</div>*/}
               {/*<div>stopwatchTotal : 1번째 데이터</div>*/}
 
-              {data.map((item, index) => (
-                <div className={"mt-2 flex font-bold"}>
+              {data?.record?.map((item, index) => (
+                <div className={"mt-2 flex font-bold"} key={index}>
                   <div className={"w-[30%]"}>
                     {detailInfo?.stopwatchLap * (index + 1)}m
                   </div>
-                  <div className={"w-[40%]"}>00:22.86</div>
-                  <div className={"w-[30%]"}>22.86</div>
+                  <div className={"w-[40%]"}>
+                      {dayjs.unix(item / 100).format("mm:ss.SSS")}
+                  </div>
+                  <div className={"w-[30%]"}>{getRecordDiff(data.record, index)}</div>
                 </div>
               ))}
             </Card>

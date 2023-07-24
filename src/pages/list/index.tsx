@@ -31,6 +31,11 @@ export default function List() {
     await router.push(`/list/detail/${index}`);
   };
 
+
+
+
+
+
   return (
     mounted && (
       <>
