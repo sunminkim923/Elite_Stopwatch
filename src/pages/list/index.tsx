@@ -11,6 +11,7 @@ export default function List() {
 
   useEffect(() => {
     setMounted(true);
+
   }, []);
 
   const getStopwatchRaw = (data: any) => {
@@ -32,10 +33,6 @@ export default function List() {
   };
 
 
-
-
-
-
   return (
     mounted && (
       <>
@@ -47,15 +44,13 @@ export default function List() {
               key={index}
             >
               <div className={"text-[16px] font-bold"}>
-                {dayjs(data.recordDate.seconds * 1000).format(
-                  "YYYY년 MM월 DD일 HH:mm:ss"
-                )}
+                  {data?.recordDateString}
               </div>
               <div className={"mt-2 text-[20px] font-bold text-blue-700"}>
-                {getStopwatchRaw(data.stopwatchRaw)}
+                {getStopwatchRaw(data?.stopwatch?.stopwatchType)}
               </div>
               <div className={"mt-2 text-[20px] font-bold"}>
-                {data?.stopwatchLap}m / {data?.stopwatchTotal}m
+                {data?.stopwatch?.lapDistance}m / {data?.stopwatch?.totalDistance}m
               </div>
             </Card>
           ))}
